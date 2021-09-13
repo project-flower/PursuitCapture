@@ -20,6 +20,9 @@
     <Setting Name="PreviewInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2000</Value>
     </Setting>
+    <Setting Name="RegEx" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="SaveTo" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

@@ -81,6 +81,8 @@ namespace PursuitCapture
             // 
             this.checkBoxRegex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxRegex.AutoSize = true;
+            this.checkBoxRegex.Checked = global::PursuitCapture.Properties.Settings.Default.RegEx;
+            this.checkBoxRegex.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PursuitCapture.Properties.Settings.Default, "RegEx", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxRegex.Location = new System.Drawing.Point(727, 14);
             this.checkBoxRegex.Name = "checkBoxRegex";
             this.checkBoxRegex.Size = new System.Drawing.Size(61, 16);
