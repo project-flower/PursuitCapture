@@ -151,6 +151,7 @@ namespace PursuitCapture
 
         private DialogResult ShowMessage(string message, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
+            Activate();
             return MessageBox.Show(this, message, Text, buttons, icon);
         }
 
