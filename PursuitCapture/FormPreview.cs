@@ -25,8 +25,7 @@ namespace PursuitCapture
 
             if (this.image != null)
             {
-                pictureBox.Image = null;
-                this.image.Dispose();
+                DisposeImage();
             }
 
             this.image = image;
