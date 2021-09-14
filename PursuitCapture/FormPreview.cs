@@ -45,6 +45,7 @@ namespace PursuitCapture
 
             if (!Visible)
             {
+                pictureBox.Visible = false;
                 Show(owner);
             }
 
@@ -90,7 +91,11 @@ namespace PursuitCapture
 
         private void visibleChanged(object sender, EventArgs e)
         {
-            if (!Visible)
+            if (Visible)
+            {
+                pictureBox.Visible = true;
+            }
+            else
             {
                 DisposeImage();
             }
