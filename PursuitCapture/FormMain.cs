@@ -12,6 +12,7 @@ namespace PursuitCapture
         #region Private Fields
 
         private readonly FormPreview formPreview = new FormPreview();
+        private readonly string openFileDialogFileName;
         private readonly int previewInterval;
 
         #endregion
@@ -23,6 +24,7 @@ namespace PursuitCapture
             InitializeComponent();
             MinimumSize = Size;
             MaximumSize = new Size(int.MaxValue, Height);
+            openFileDialogFileName = openFileDialog.FileName;
             Settings settings = Settings.Default;
             previewInterval = settings.PreviewInterval;
             RadioButton radioButton = (settings.DateTime ? radioButtonDateTime : radioButtonIncrement);
@@ -178,6 +180,37 @@ namespace PursuitCapture
         private void buttonDown_Click(object sender, EventArgs e)
         {
             Increment(-1);
+        }
+
+        private void buttonExplore_Click(object sender, EventArgs e)
+        {
+            string directory = comboBoxSaveTo.Text;
+            openFileDialog.FileName = openFileDialogFileName;
+
+            try
+            {
+                if (Directory.Exists(directory))
+                {
+                    openFileDialog.InitialDirectory = directory;
+                }
+            }
+            catch
+            {
+            }
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            try
+            {
+                comboBoxSaveTo.Text = Path.GetDirectoryName(openFileDialog.FileName);
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
