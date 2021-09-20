@@ -51,7 +51,7 @@ namespace PursuitCapture
             this.numericUpDownDelay = new System.Windows.Forms.NumericUpDown();
             this.buttonCapture = new System.Windows.Forms.Button();
             this.mainEngine = new PursuitCapture.MainEngine();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.selectDirectoryDialog = new System.Windows.Forms.SelectDirectoryDialog();
             this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
@@ -294,12 +294,9 @@ namespace PursuitCapture
             // 
             this.mainEngine.RequireDialog += new PursuitCapture.Events.RequireDialogEventHandler(this.mainEngine_RequireDialog);
             // 
-            // openFileDialog
+            // selectDirectoryDialog
             // 
-            this.openFileDialog.CheckFileExists = false;
-            this.openFileDialog.FileName = "Folder Selection.";
-            this.openFileDialog.Filter = "All Files|*.*";
-            this.openFileDialog.Title = "Open";
+            this.selectDirectoryDialog.DirectoryName = null;
             // 
             // timer
             // 
@@ -363,7 +360,7 @@ namespace PursuitCapture
         private System.Windows.Forms.Label labelDelay;
         private System.Windows.Forms.NumericUpDown numericUpDownDelay;
         private MainEngine mainEngine;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SelectDirectoryDialog selectDirectoryDialog;
         private System.Windows.Forms.Timer timer;
     }
 }

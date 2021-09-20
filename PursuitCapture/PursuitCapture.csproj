@@ -53,6 +53,9 @@
   <ItemGroup>
     <Compile Include="Events\RequireDialogEventArgs.cs" />
     <Compile Include="Events\RequireDialogEventHandler.cs" />
+    <Compile Include="FileOpenDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,7 +74,13 @@
     <Compile Include="PlatformMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectDirectoryDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Win32Api\Kernel32.cs" />
+    <Compile Include="Win32Api\Shell32.cs" />
+    <Compile Include="Win32Api\ShlObjIdl_Core.h.cs" />
+    <Compile Include="Win32Api\ShlObj_Core.h.cs" />
     <Compile Include="Win32Api\User32.cs" />
     <Compile Include="Win32Api\WinBase.h.cs" />
     <Compile Include="Win32Api\WinDef.h.cs" />
