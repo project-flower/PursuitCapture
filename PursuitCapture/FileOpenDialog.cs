@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using Win32Api;
 
 namespace System.Windows.Forms
@@ -60,21 +62,27 @@ namespace System.Windows.Forms
             try
             {
                 IShellItem item;
+                IntPtr pidl;
+                bool setDirectory;
 
-                if (!string.IsNullOrEmpty(DisplayName))
+                if (string.IsNullOrEmpty(DisplayName))
                 {
-                    IntPtr pidl;
+                    setDirectory = (Shell32.SHGetSpecialFolderLocation(IntPtr.Zero, CSIDL.DRIVES, out pidl) == 0);
+                }
+                else
+                {
                     uint rgfInOut = 0;
+                    setDirectory = (Shell32.SHILCreateFromPath(DisplayName, out pidl, ref rgfInOut) == 0);
+                }
 
-                    if (Shell32.SHILCreateFromPath(DisplayName, out pidl, ref rgfInOut) == 0)
+                if (setDirectory)
+                {
+                    if (Shell32.SHCreateShellItem(IntPtr.Zero, IntPtr.Zero, pidl, out item) == 0)
                     {
-                        if (Shell32.SHCreateShellItem(IntPtr.Zero, IntPtr.Zero, pidl, out item) == 0)
-                        {
-                            dialog.SetFolder(item);
-                        }
-
-                        Marshal.FreeCoTaskMem(pidl);
+                        dialog.SetFolder(item);
                     }
+
+                    Marshal.FreeCoTaskMem(pidl);
                 }
 
                 uint result = dialog.Show(hwndOwner);
