@@ -191,6 +191,7 @@ namespace PursuitCapture
 
             try
             {
+                comboBoxSaveTo.ResetText();
                 comboBoxSaveTo.Text = selectDirectoryDialog.DirectoryName;
             }
             catch
